@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Square from './components/Square'
+import PlayAgain from './components/PlayAgain'
 import './App.css'
 
 class App extends Component{
@@ -16,12 +17,15 @@ class App extends Component{
     }
   }
 
-  // create function to handle turns
-  // destructure the state object to call on its property by just calling the key name
-  // 
-
-  handleGameplay = () => {
-
+  restartGame = () => {
+    this.setState({
+      squares: [0, 1, 2, 3, 4, 5, 6, 7, 8], 
+      playerX: true, 
+      gamePlay: true, 
+      click: true, 
+      circleWinning: false, 
+      crossWinning: false, 
+      draw: false})
   }
 
   checkWin = (value, index) => {
@@ -68,8 +72,6 @@ class App extends Component{
     }
   }
 
-  // (typeof squares[0] === "string" && typeof squares[1] === "string" && typeof squares[2] === "string" && typeof squares[3] === "string" && typeof squares[4] === "string" && typeof squares[5] === "string" && typeof squares[6] === "string" && typeof squares[7] === "string" && typeof squares[8] === "string")
-
   handleTurn = (index) => {
     const {squares} = this.state;
     const {playerX} = this.state;
@@ -104,6 +106,9 @@ class App extends Component{
               <Square value={value} key={index} index={index} handleTurn={this.handleTurn} checkWin={this.checkWin}/>
             )
           })}
+        </div>
+        <div>
+          <PlayAgain restartGame={this.restartGame}/>
         </div>
       </>
     )
