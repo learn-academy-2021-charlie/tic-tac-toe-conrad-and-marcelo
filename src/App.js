@@ -6,9 +6,8 @@ class App extends Component{
   constructor(props){
     super(props)
     this.state = {
-      squares: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      squares: ['', '', '', '', '', '', '', '', ''],
       playerX: true,
-      playerO: false
     }
   }
 
@@ -17,11 +16,20 @@ class App extends Component{
   // 
   handleTurn = (index) => {
     const {squares} = this.state;
-
-    squares[index] = '❌'
-    this.setState({
-      squares: squares
-    })
+    const {playerX} = this.state;
+    if (playerX === true){
+      squares[index] = '❌'
+      this.setState({
+        squares: squares,
+        playerX: false
+      })
+    } else if (playerX === false){
+      squares[index] = '⭕️'
+      this.setState({
+        squares: squares,
+        playerX: true
+      })
+    }
   }
 
   render(){
