@@ -100,8 +100,8 @@ class App extends Component{
         <div id="winning">{this.state.crossWinning && <p>Cross Wins</p>}</div>
         <div id="winning">{this.state.circleWinning && <p>Circle Wins</p>}</div>
         <div id="winning">{this.state.draw && <p>Draw</p>}</div>
-        <div>{this.state.playerX && <p>Player X turn</p>}</div>
-        <div>{!this.state.playerX && <p>Player 0 turn</p>}</div>
+        <div id="playerTurn">{this.state.playerX && <p>Player X turn</p>}</div>
+        <div id="playerTurn">{!this.state.playerX && <p>Player 0 turn</p>}</div>
         <div id="gameboard">
           {this.state.squares.map((value, index) => {
             return (
