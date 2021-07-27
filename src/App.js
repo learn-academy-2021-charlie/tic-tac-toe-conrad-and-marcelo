@@ -19,7 +19,7 @@ class App extends Component{
         <div id="gameboard">
           {this.state.squares.map((value, index) => {
             return (
-              <Square />
+              <Square value={value} key={index} />
             )
           })}
         </div>
