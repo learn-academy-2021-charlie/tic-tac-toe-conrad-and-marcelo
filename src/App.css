@@ -18,3 +18,9 @@ h1 {
   flex-wrap: wrap;
   margin: 0 auto;
 }
+
+#winning {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
