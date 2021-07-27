@@ -17,13 +17,13 @@ class App extends Component{
   handleTurn = (index) => {
     const {squares} = this.state;
     const {playerX} = this.state;
-    if (playerX === true){
+    if (playerX === true && squares[index] !== '⭕️'){
       squares[index] = '❌'
       this.setState({
         squares: squares,
         playerX: false
       })
-    } else if (playerX === false){
+    } else if (playerX === false && squares[index] !== '❌'){
       squares[index] = '⭕️'
       this.setState({
         squares: squares,
