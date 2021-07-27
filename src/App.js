@@ -6,12 +6,13 @@ class App extends Component{
   constructor(props){
     super(props)
     this.state = {
-      squares: ['0', '1', '2', '3', '4', '5', '6', '7', '8'],
+      squares: [0, 1, 2, 3, 4, 5, 6, 7, 8],
       playerX: true,
       gamePlay: true,
       click: true,
       circleWinning: false,
-      crossWinning: false
+      crossWinning: false,
+      draw: false
     }
   }
 
@@ -24,7 +25,7 @@ class App extends Component{
   }
 
   checkWin = (value, index) => {
-    const {squares, click, gamePlay} = this.state;
+    const {squares, click, gamePlay, draw} = this.state;
     console.log(value)
     console.log(index)
     console.log(squares[index])
@@ -61,9 +62,13 @@ class App extends Component{
         this.setState({circleWinning: true, click: false, gamePlay: false})
       } else if (squares[6] === '⭕️' && squares[4] === '⭕️' && squares[2] === '⭕️') {
         this.setState({circleWinning: true, click: false, gamePlay: false})
+      } else if (typeof squares[0] === "string" && typeof squares[1] === "string" && typeof squares[2] === "string" && typeof squares[3] === "string" && typeof squares[4] === "string" && typeof squares[5] === "string" && typeof squares[6] === "string" && typeof squares[7] === "string" && typeof squares[8] === "string") {
+        this.setState({draw: true, click: false, gamePlay: false})
       }
     }
   }
+
+  // (typeof squares[0] === "string" && typeof squares[1] === "string" && typeof squares[2] === "string" && typeof squares[3] === "string" && typeof squares[4] === "string" && typeof squares[5] === "string" && typeof squares[6] === "string" && typeof squares[7] === "string" && typeof squares[8] === "string")
 
   handleTurn = (index) => {
     const {squares} = this.state;
@@ -92,6 +97,7 @@ class App extends Component{
         <h1>Tic Tac Toe</h1>
         <div id="winning">{this.state.crossWinning && <p>Cross Wins</p>}</div>
         <div id="winning">{this.state.circleWinning && <p>Circle Wins</p>}</div>
+        <div id="winning">{this.state.draw && <p>Draw</p>}</div>
         <div id="gameboard">
           {this.state.squares.map((value, index) => {
             return (
