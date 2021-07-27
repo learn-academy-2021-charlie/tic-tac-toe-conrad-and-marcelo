@@ -25,7 +25,8 @@ class App extends Component{
       click: true, 
       circleWinning: false, 
       crossWinning: false, 
-      draw: false})
+      draw: false
+    })
   }
 
   checkWin = (value, index) => {
@@ -67,6 +68,7 @@ class App extends Component{
       } else if (squares[6] === '⭕️' && squares[4] === '⭕️' && squares[2] === '⭕️') {
         this.setState({circleWinning: true, click: false, gamePlay: false})
       } else if (typeof squares[0] === "string" && typeof squares[1] === "string" && typeof squares[2] === "string" && typeof squares[3] === "string" && typeof squares[4] === "string" && typeof squares[5] === "string" && typeof squares[6] === "string" && typeof squares[7] === "string" && typeof squares[8] === "string") {
+        console.log(this.state.draw)
         this.setState({draw: true, click: false, gamePlay: false})
       }
     }
@@ -99,9 +101,9 @@ class App extends Component{
         <h1>Tic Tac Toe</h1>
         <div id="winning">{this.state.crossWinning && <p>Cross Wins</p>}</div>
         <div id="winning">{this.state.circleWinning && <p>Circle Wins</p>}</div>
+        <div id="playerTurn">{!this.state.draw && this.state.playerX && !this.state.crossWinning && !this.state.circleWinning && <p>Player X turn</p>}</div>
+        <div id="playerTurn">{!this.state.draw && !this.state.playerX && !this.state.crossWinning && !this.state.circleWinning && <p>Player 0 turn</p>}</div>
         <div id="winning">{this.state.draw && <p>Draw</p>}</div>
-        <div id="playerTurn">{this.state.playerX && <p>Player X turn</p>}</div>
-        <div id="playerTurn">{!this.state.playerX && <p>Player 0 turn</p>}</div>
         <div id="gameboard">
           {this.state.squares.map((value, index) => {
             return (
