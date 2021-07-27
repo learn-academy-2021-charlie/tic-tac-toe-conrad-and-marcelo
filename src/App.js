@@ -7,13 +7,17 @@ class App extends Component{
     super(props)
     this.state = {
       squares: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      circle: 'circle',
-      cross: 'cross'
+      playerX: true,
+      playerO: false
     }
   }
 
+  // create function to handle turns
+  // destructure the state object to call on its property by just calling the key name
+  // 
   handleTurn = (index) => {
     const {squares} = this.state;
+
     squares[index] = '❌'
     this.setState({
       squares: squares
